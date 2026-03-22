@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Taste — Fine Food Delivered</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════
+       NAV
+  ══════════════════════════════ -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">My <span>Taste</span></a>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#how">How it Works</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="cart-btn" onclick="toggleCart()">
+        🛒 Cart
+        <div class="cart-count" id="cartCount">0</div>
+      </button>
+      <button class="hamburger" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile dropdown -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#menu"    onclick="toggleMobileMenu()">Menu</a>
+    <a href="#how"     onclick="toggleMobileMenu()">How it Works</a>
+    <a href="#reviews" onclick="toggleMobileMenu()">Reviews</a>
+    <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+  </div>
+
+  <!-- ══════════════════════════════
+       HERO
+  ══════════════════════════════ -->
+  <section class="hero">
+
+    <!-- Animated background layer -->
+    <div class="hero-bg">
+      <div class="bg-slide active" style="background-image:url('/img/bgimg1.png')"></div>
+      <div class="bg-slide"        style="background-image:url('/img/bgimg2.png')"></div>
+      <div class="bg-slide"        style="background-image:url('/img/bgimg3.png')"></div>
+      <div class="bg-slide"        style="background-image:url('/img/bgimg4.png')"></div>
+      <div class="food-particles" id="foodParticles"></div>
+    </div>
+
+    <!-- Left — text -->
+    <div class="hero-left">
+      <div class="hero-tag">Free delivery · 30 min</div>
+      <h1 class="hero-title">
+        <span class="word w1"><span>Every</span></span>&#32;<span class="word w2"><span>bite,</span></span><br>
+        <span class="word w3"><span><em>crafted</em></span></span>&#32;<span class="word w4"><span>for</span></span><br>
+        <span class="word w5"><span>your</span></span>&#32;<span class="word w6"><span>palate.</span></span>
+      </h1>
+      <p class="hero-subtitle">
+        Restaurant-quality meals curated by master chefs and delivered to your door.
+        From rustic Italian to contemporary Asian — your next favourite meal awaits.
+      </p>
+      <div class="hero-actions">
+        <button class="btn-primary"   onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Explore Menu →</button>
+        <button class="btn-secondary" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">How It Works</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num">240+</div><div class="stat-label">Dishes</div></div>
+        <div><div class="stat-num">4.9★</div><div class="stat-label">Rating</div></div>
+        <div><div class="stat-num">50k+</div><div class="stat-label">Happy orders</div></div>
+      </div>
+    </div>
+
+    <!-- Right — food photo slideshow -->
+    <div class="hero-right">
+      <div class="hero-slideshow" id="heroSlideshow">
+        <div class="hs-slide active" style="background-image:url('/img/img1.png')"></div>
+        <div class="hs-slide"        style="background-image:url('/img/img2.png')"></div>
+        <div class="hs-slide"        style="background-image:url('/img/img3.png')"></div>
+        <div class="hs-slide"        style="background-image:url('/img/img4.png')"></div>
+        <div class="hs-slide"        style="background-image:url('/img/img5.png')"></div>
+      </div>
+      <div class="hero-right-overlay"></div>
+      <div class="hero-slide-dots" id="slideDots"></div>
+      <div class="hero-card">
+        <div class="hero-card-icon">🔥</div>
+        <div class="hero-card-text">
+          <div class="t1">Chef's Special Today</div>
+          <div class="t2">Truffle Pasta · ₹420</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════
+       CATEGORIES
+  ══════════════════════════════ -->
+  <section class="categories" id="categories">
+    <div class="section-header">
+      <div class="section-tag">Browse by</div>
+      <h2 class="section-title">Explore <em>Categories</em></h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-pill active" onclick="filterMenu('all',this)">    <span>🍽️</span> All Items</div>
+      <div class="cat-pill"        onclick="filterMenu('italian',this)"> <span>🍝</span> Italian</div>
+      <div class="cat-pill"        onclick="filterMenu('asian',this)">   <span>🍜</span> Asian</div>
+      <div class="cat-pill"        onclick="filterMenu('burgers',this)"> <span>🍔</span> Burgers</div>
+      <div class="cat-pill"        onclick="filterMenu('salads',this)">  <span>🥗</span> Salads</div>
+      <div class="cat-pill"        onclick="filterMenu('desserts',this)"><span>🍮</span> Desserts</div>
+      <div class="cat-pill"        onclick="filterMenu('drinks',this)">  <span>🍹</span> Drinks</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       MENU GRID
+  ══════════════════════════════ -->
+  <section class="menu-section" id="menu">
+    <div class="section-header">
+      <div class="section-tag">Handpicked</div>
+      <h2 class="section-title">Today's <em>Menu</em></h2>
+    </div>
+    <div class="menu-grid" id="menuGrid"></div>
+  </section>
+
+  <!-- ══════════════════════════════
+       HOW IT WORKS
+  ══════════════════════════════ -->
+  <section class="how" id="how">
+    <div class="section-header">
+      <div class="section-tag">Simple & Fast</div>
+      <h2 class="section-title">How <em>It Works</em></h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <div class="step-icon">🗺️</div>
+        <div class="step-title">Choose a Dish</div>
+        <p class="step-desc">Browse our curated menu of restaurant-grade meals crafted by professional chefs.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <div class="step-icon">🛒</div>
+        <div class="step-title">Add to Cart</div>
+        <p class="step-desc">Customise your order and add it to your cart with a single tap.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <div class="step-icon">💳</div>
+        <div class="step-title">Pay Securely</div>
+        <p class="step-desc">UPI, debit/credit card, or cash on delivery — all accepted instantly.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <div class="step-icon">🏍️</div>
+        <div class="step-title">Enjoy Delivery</div>
+        <p class="step-desc">Your hot meal arrives at your door in under 30 minutes, guaranteed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       PROMO BANNER
+  ══════════════════════════════ -->
+  <section class="promo" id="contact">
+    <div class="promo-tag">Exclusive Offer</div>
+    <h2>Get <em>20% off</em> your<br>first order</h2>
+    <p>Subscribe and unlock your welcome discount instantly.</p>
+    <div class="promo-form">
+      <input class="promo-input" type="email" placeholder="Your email address" id="promoEmail" />
+      <button class="promo-btn" onclick="handlePromo()">Claim Offer</button>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       TESTIMONIALS
+  ══════════════════════════════ -->
+  <section class="testimonials" id="reviews">
+    <div class="section-header">
+      <div class="section-tag">What people say</div>
+      <h2 class="section-title">Loved by <em>food lovers</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The truffle pasta was an absolute revelation. Delivered hot and perfectly al dente — better than my favourite restaurant."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">P</div>
+          <div><div class="testi-name">Priya Sharma</div><div class="testi-role">Food Blogger, Bangalore</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I order from My Taste every single week. The quality is insanely consistent and the delivery is always on time. Worth every rupee."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div><div class="testi-name">Rohan Mehta</div><div class="testi-role">Software Engineer</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★☆</div>
+        <p class="testi-text">"Discovered the best ramen I've had outside of Japan. My Taste has completely ruined me for other food delivery apps."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div><div class="testi-name">Ananya Kapoor</div><div class="testi-role">Designer, Mumbai</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+       FOOTER
+  ══════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">My <span>Taste</span></div>
+        <p>Restaurant-quality food delivered to your door. Crafted with passion, delivered with care.</p>
+        <div class="footer-socials">
+          <button class="social-btn">𝕏</button>
+          <button class="social-btn">in</button>
+          <button class="social-btn">f</button>
+          <button class="social-btn">▷</button>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Centre</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Refund Policy</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 My Taste. All rights reserved.</span>
+      <span>Made with ❤️ in Bangalore</span>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════
+       CART SIDEBAR
+  ══════════════════════════════ -->
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Your Order</h3>
+      <button class="close-cart" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <div style="font-size:3rem;margin-bottom:1rem">🛒</div>
+        <p>Your cart is empty.<br>Start adding some delicious food!</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total (incl. taxes)</span>
+        <strong id="cartTotal">₹0</strong>
+      </div>
+      <button class="checkout-btn" onclick="openPayment()">Proceed to Payment →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       PAYMENT MODAL
+  ══════════════════════════════ -->
+  <div class="pay-overlay" id="payOverlay">
+    <div class="pay-modal">
+
+      <!-- Payment form -->
+      <div id="payFormSection">
+        <div class="pay-modal-head">
+          <h3>🔒 Secure Payment</h3>
+          <button class="close-pay" onclick="closePayment()">✕</button>
+        </div>
+        <div class="pay-body">
+
+          <!-- Order summary -->
+          <div class="pay-summary">
+            <div class="pay-summary-title">Order Summary</div>
+            <div id="paySummaryItems"></div>
+            <hr class="pay-divider" />
+            <div class="pay-item"><span>Subtotal</span><span id="paySubtotal">₹0</span></div>
+            <div class="pay-item"><span>Delivery</span><span style="color:var(--sage)">Free 🎉</span></div>
+            <div class="pay-item"><span>GST (5%)</span><span id="payTax">₹0</span></div>
+            <hr class="pay-divider" />
+            <div class="pay-item total"><span>Total Payable</span><strong id="payTotal">₹0</strong></div>
+          </div>
+
+          <!-- Delivery address -->
+          <div class="pay-label">📍 Delivery Details</div>
+          <div class="pay-row">
+            <div><input class="pay-input" placeholder="Full Name"     id="payName"  /></div>
+            <div><input class="pay-input" placeholder="Phone Number"  id="payPhone" type="tel" /></div>
+          </div>
+          <div class="pay-input-wrap">
+            <input class="pay-input" placeholder="Street Address" id="payAddr" />
+          </div>
+          <div class="pay-row">
+            <div><input class="pay-input" placeholder="City"     id="payCity" /></div>
+            <div><input class="pay-input" placeholder="PIN Code" id="payPin"  type="number" /></div>
+          </div>
+
+          <!-- Payment method tabs -->
+          <div class="pay-label" style="margin-top:.4rem;">💳 Payment Method</div>
+          <div class="pay-tabs">
+            <button class="pay-tab active" onclick="switchTab('upi',this)">📱 UPI</button>
+            <button class="pay-tab"        onclick="switchTab('card',this)">💳 Card</button>
+            <button class="pay-tab"        onclick="switchTab('cod',this)">💵 Cash</button>
+          </div>
+
+          <!-- UPI panel -->
+          <div class="pay-panel active" id="panel-upi">
+            <div class="upi-apps">
+              <div class="upi-app" onclick="selectUpi(this,'gpay')">  <div class="upi-app-icon">🔵</div><div class="upi-app-name">GPay</div></div>
+              <div class="upi-app" onclick="selectUpi(this,'phonepe')"><div class="upi-app-icon">🟣</div><div class="upi-app-name">PhonePe</div></div>
+              <div class="upi-app" onclick="selectUpi(this,'paytm')"> <div class="upi-app-icon">🔷</div><div class="upi-app-name">Paytm</div></div>
+              <div class="upi-app" onclick="selectUpi(this,'bhim')">  <div class="upi-app-icon">🟠</div><div class="upi-app-name">BHIM</div></div>
+            </div>
+            <div class="pay-input-wrap">
+              <label class="pay-label">Or enter UPI ID</label>
+              <input class="pay-input" placeholder="yourname@upi" id="upiId" />
+            </div>
+          </div>
+
+          <!-- Card panel -->
+          <div class="pay-panel" id="panel-card">
+            <div class="card-visual">
+              <div class="cv-chip">▭</div>
+              <div class="cv-number" id="cvNumber">•••• •••• •••• ••••</div>
+              <div class="cv-row">
+                <span id="cvName">CARD HOLDER</span>
+                <span id="cvExp">MM/YY</span>
+              </div>
+            </div>
+            <div class="pay-input-wrap">
+              <label class="pay-label">Card Number</label>
+              <input class="pay-input" placeholder="1234 5678 9012 3456" id="cardNum" maxlength="19" oninput="fmtCard(this)" />
+            </div>
+            <div class="card-inputs">
+              <div>
+                <label class="pay-label">Expiry</label>
+                <input class="pay-input" placeholder="MM/YY" id="cardExp" maxlength="5" oninput="fmtExp(this)" />
+              </div>
+              <div>
+                <label class="pay-label">CVV</label>
+                <input class="pay-input" placeholder="•••" type="password" maxlength="3" />
+              </div>
+            </div>
+            <div class="pay-input-wrap">
+              <label class="pay-label">Name on Card</label>
+              <input class="pay-input" placeholder="John Doe" id="cardName"
+                oninput="document.getElementById('cvName').textContent = this.value.toUpperCase() || 'CARD HOLDER'" />
+            </div>
+          </div>
+
+          <!-- COD panel -->
+          <div class="pay-panel" id="panel-cod">
+            <div class="cod-msg">
+              <div class="cod-icon">💵</div>
+              <h4>Cash on Delivery</h4>
+              <p>Pay in cash when your order arrives. Please keep exact change ready. Our delivery partner will collect the amount at your door.</p>
+            </div>
+          </div>
+
+          <button class="pay-submit" id="paySubmitBtn" onclick="processPayment()">
+            <span>🔒</span><span id="payBtnText">Pay Now</span>
+          </button>
+          <div class="secure-badge">🔐 256-bit SSL encrypted · PCI DSS compliant · Powered by Razorpay</div>
+        </div>
+      </div>
+
+      <!-- Success screen -->
+      <div class="pay-success" id="paySuccess">
+        <div class="success-anim">✅</div>
+        <h3>Order Confirmed!</h3>
+        <p>Your delicious food is being prepared and will arrive shortly.</p>
+        <div class="success-order" id="successOrder"></div>
+        <p style="font-size:.85rem;color:var(--text-muted);">You'll receive an SMS update on your delivery status.</p>
+        <button class="pay-submit" style="margin-top:1.5rem;" onclick="closePayment()">Continue Shopping 🛍️</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
