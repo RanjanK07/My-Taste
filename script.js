@@ -3,97 +3,97 @@ const menuItems = [
   {
     id: 1, cat: 'italian', name: 'Truffle Carbonara', price: 420, badge: "Chef's Pick",
     desc: 'House-made pasta, 63° egg, pancetta, aged Pecorino & truffle shavings.',
-    img: '/img/item1.png'
+    img: 'img/item1.png'
   },
   {
     id: 2, cat: 'italian', name: 'Margherita Napoletana', price: 320, badge: 'Popular',
     desc: 'San Marzano tomatoes, buffalo mozzarella, fresh basil on a 72h fermented base.',
-    img: '/img/item2.png'
+    img: 'img/item2.png'
   },
   {
     id: 3, cat: 'italian', name: 'Cacio e Pepe', price: 380, badge: '',
     desc: 'Spaghetti, Pecorino Romano, Parmigiano Reggiano & freshly cracked black pepper.',
-    img: '/img/item3.png'
+    img: 'img/item3.png'
   },
   // Asian
   {
     id: 4, cat: 'asian', name: 'Tonkotsu Ramen', price: 380, badge: 'New',
     desc: '12-hour pork bone broth, chashu, soft egg, nori & bamboo shoots.',
-    img: '/img/item4.png'
+    img: 'img/item4.png'
   },
   {
     id: 5, cat: 'asian', name: 'Pad Thai', price: 290, badge: '',
     desc: 'Wok-tossed rice noodles, tiger prawns, tamarind, peanuts & lime.',
-    img: '/img/item5.png'
+    img: 'img/item5.png'
   },
   {
     id: 6, cat: 'asian', name: 'Kung Pao Chicken', price: 340, badge: 'Spicy 🌶️',
     desc: 'Wok-fried chicken, peanuts, dried chillies & Sichuan peppercorn.',
-    img: '/img/item6.png'
+    img: 'img/item6.png'
   },
   // Burgers
   {
     id: 7, cat: 'burgers', name: 'Smash Burger', price: 340, badge: 'Best Seller',
     desc: 'Double smash patty, American cheese, caramelised onions & house sauce.',
-    img: '/img/item7.png'
+    img: 'img/item7.png'
   },
   {
     id: 8, cat: 'burgers', name: 'Mushroom Swiss Burger', price: 310, badge: '',
     desc: 'Beef patty, sautéed wild mushrooms, Swiss cheese & garlic aioli.',
-    img: '/img/item8.png'
+    img: 'img/item8.png'
   },
   {
     id: 9, cat: 'burgers', name: 'Crispy Chicken Burger', price: 290, badge: '',
     desc: 'Buttermilk fried chicken, pickles, sriracha mayo & cabbage slaw.',
-    img: '/img/item9.png'
+    img: 'img/item9.png'
   },
   // Salads
   {
     id: 10, cat: 'salads', name: 'Quinoa Power Bowl', price: 260, badge: 'Healthy',
     desc: 'Tricolour quinoa, roasted veggies, avocado, seeds & lemon tahini dressing.',
-    img: '/img/item10.png'
+    img: 'img/item10.png'
   },
   {
     id: 11, cat: 'salads', name: 'Classic Caesar', price: 220, badge: '',
     desc: 'Romaine, house Caesar dressing, parmesan shavings, croutons & anchovies.',
-    img: '/img/item11.png'
+    img: 'img/item11.png'
   },
   {
     id: 12, cat: 'salads', name: 'Burrata & Heirloom', price: 280, badge: 'New',
     desc: 'Creamy burrata, heirloom tomatoes, basil oil & balsamic pearls.',
-    img: '/img/item12.png'
+    img: 'img/item12.png'
   },
   // Desserts
   {
     id: 13, cat: 'desserts', name: 'Tiramisu', price: 180, badge: 'Crowd Fav',
     desc: 'Savoiardi, mascarpone cream, espresso soak & dark cocoa dust.',
-    img: '/img/item13.png'
+    img: 'img/item13.png'
   },
   {
     id: 14, cat: 'desserts', name: 'Mango Panna Cotta', price: 160, badge: 'Seasonal',
     desc: 'Silky vanilla panna cotta with fresh Alphonso mango coulis.',
-    img: '/img/item14.png'
+    img: 'img/item14.png'
   },
   {
     id: 15, cat: 'desserts', name: 'Chocolate Lava Cake', price: 200, badge: '🍫 Hot',
     desc: 'Warm dark chocolate fondant with a gooey centre & vanilla ice cream.',
-    img: '/img/item15.png'
+    img: 'img/item15.png'
   },
   // Drinks
   {
     id: 16, cat: 'drinks', name: 'Watermelon Fresca', price: 120, badge: 'Refreshing',
     desc: 'Fresh watermelon, lime juice, mint & a hint of chilli salt.',
-    img: '/img/item16.png'
+    img: 'img/item16.png'
   },
   {
     id: 17, cat: 'drinks', name: 'Cold Brew Coffee', price: 140, badge: '',
     desc: '18-hour slow-steeped single-origin cold brew, served over ice.',
-    img: '/img/item17.png'
+    img: 'img/item17.png'
   },
   {
     id: 18, cat: 'drinks', name: 'Mango Lassi', price: 110, badge: '',
     desc: 'Thick Alphonso mango, yoghurt, rose water & cardamom.',
-    img: '/img/item18.png'
+    img: 'img/item18.png'
   },
 ];
 
